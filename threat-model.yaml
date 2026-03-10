@@ -13,6 +13,7 @@ threats:
   - id: T1
     name: SQL Injection
     component: WebApp
+    mitigation: Input validation
   - id: T2
     name: Unauthorized Data Access
     component: Database
