@@ -54,7 +54,7 @@ def validate_threat_model(model: dict) -> list[str]:
         if comp.get("type") == "api" and comp.get("exposed") is True:
             if comp.get("auth_required") is not True:
                 errors.append(
-                    f"Public API '{comp.get('name', 'unknown')}' does not require authentication"
+                    f"Se encontró una API expuesta sin autenticación obligatoria: '{comp.get('name', 'unknown')}'"
                 )
 
     return errors
