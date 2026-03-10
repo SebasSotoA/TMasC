@@ -12,7 +12,7 @@ components:
   - name: PublicInfoAPI
     type: api
     exposed: true
-    auth_required: false
+    auth_required: true
 
   - name: AnalyticsAPI
     type: api

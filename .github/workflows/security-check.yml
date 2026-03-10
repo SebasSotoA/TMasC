@@ -23,7 +23,7 @@ jobs:
   # Caso 2 y 3: threat-model-auth-example — debe fallar (API sin auth + ruta no documentada)
   validate-auth-example:
     runs-on: ubuntu-latest
-    continue-on-error: true  # El workflow pasa, pero este job muestra el fallo en la UI
+    continue-on-error: true # El workflow pasa, pero este job muestra el fallo en la UI
     needs: validate-main
     steps:
       - uses: actions/checkout@v4
