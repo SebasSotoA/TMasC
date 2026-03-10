@@ -1,0 +1,21 @@
+# Ejemplo 1 — Todas las APIs expuestas deben requerir autenticación
+# Este ejemplo FALLA la validación: PublicInfoAPI está expuesta sin auth
+
+system: Example API System
+
+components:
+  - name: UserAPI
+    type: api
+    exposed: true
+    auth_required: true
+
+  - name: PublicInfoAPI
+    type: api
+    exposed: true
+    auth_required: false
+
+threats:
+  - id: T1
+    name: Unauthorized API Access
+    component: PublicInfoAPI
+    mitigation: Require authentication for all exposed APIs

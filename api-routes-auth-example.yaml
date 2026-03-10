@@ -1,0 +1,13 @@
+# Manifiesto de rutas — cada ruta debe tener su componente en el threat model
+# Si un desarrollador agrega una ruta aquí sin actualizar threat-model.yaml, el pipeline falla
+
+routes:
+  - path: /api/users
+    component: UserAPI
+
+  - path: /api/public
+    component: PublicInfoAPI
+
+  # Ejemplo: desarrollador agregó este endpoint pero NO lo puso en el threat model
+  - path: /api/analytics
+    component: AnalyticsAPI
