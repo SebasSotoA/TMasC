@@ -17,13 +17,12 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Validate threat-model.yaml (debe pasar)
+      - name: Validate threat-model.yaml
         run: python tools/threat_check.py threat-model.yaml
 
-  # Caso 2 y 3: threat-model-auth-example — debe fallar (API sin auth + ruta no documentada)
+  # Caso 2 y 3: threat-model-auth-example
   validate-auth-example:
     runs-on: ubuntu-latest
-    continue-on-error: true # El workflow pasa, pero este job muestra el fallo en la UI
     needs: validate-main
     steps:
       - uses: actions/checkout@v4
@@ -36,5 +35,5 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Validate threat-model-auth-example.yaml (debe fallar)
+      - name: Validate threat-model-auth-example.yaml
         run: python tools/threat_check.py threat-model-auth-example.yaml

@@ -17,7 +17,7 @@ components:
   - name: AnalyticsAPI
     type: api
     exposed: true
-    auth_required: true
+    auth_required: false
 
 threats:
   - id: T1
