@@ -2,6 +2,8 @@
 
 A short lab demonstrating how threat models can be integrated into CI/CD pipelines for automated security validation.
 
+> **¿No entiendes TMasC o cómo presentar?** Lee **[docs/GUIA_PRESENTACION.md](docs/GUIA_PRESENTACION.md)** — explica todo en español y cómo hacer la presentación paso a paso.
+
 ## Lab Structure
 
 ```

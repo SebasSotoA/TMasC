@@ -3,11 +3,11 @@ name: Security Check
 on: [push, pull_request]
 
 jobs:
-  threat-model-scan:
+  # Caso 1: threat-model.yaml — debe pasar
+  validate-main:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -17,5 +17,24 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Validate Threat Model
+      - name: Validate threat-model.yaml (debe pasar)
         run: python tools/threat_check.py threat-model.yaml
+
+  # Caso 2 y 3: threat-model-auth-example — debe fallar (API sin auth + ruta no documentada)
+  validate-auth-example:
+    runs-on: ubuntu-latest
+    continue-on-error: true  # El workflow pasa, pero este job muestra el fallo en la UI
+    needs: validate-main
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Validate threat-model-auth-example.yaml (debe fallar)
+        run: python tools/threat_check.py threat-model-auth-example.yaml
